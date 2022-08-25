@@ -1,0 +1,33 @@
+definitions:
+    steps:
+        - step: &backend-test
+            runs-on:
+                - self.hosted
+                - windows
+            script:
+                - dotnet restore
+                - dotnet build --no-restore
+                - dotnet test --no-build --no-restore
+        - step: &backend-deploy
+            runs-on:
+                - self.hosted
+                - windows
+            script:
+                - dotnet publish ./src/WebUI/WebUI.csproj -c Release -o ./publish
+            artifacts:
+                - publish/**
+pipelines:
+    pull-requests:
+        "**":
+            - step:
+                <<: *backend-test
+                name: Build&Test
+    branches:
+        develop:
+            - step:
+                <<: *backend-test
+                name: Build&Tests
+            - step:
+                <<: *backend-deploy
+                name: Publish
+        
