@@ -26,6 +26,8 @@ public class ApplicationDbContext : DbContext, IApplicationDbContext
     }
 
     public DbSet<Product> Products => Set<Product>();
+    public DbSet<Meal> Meals => Set<Meal>();
+    public DbSet<MealPlan> MealPlan => Set<MealPlan>();
 
     protected override void OnModelCreating(ModelBuilder builder)
     {

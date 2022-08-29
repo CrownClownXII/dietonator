@@ -41,8 +41,104 @@
             "type": "object",
             "additionalProperties": false,
             "properties": {
+              "meals": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/Meal"
+                }
+              },
               "name": {
                 "type": "string"
+              },
+              "kcal": {
+                "type": "integer",
+                "format": "int32"
+              },
+              "proteins": {
+                "type": "number",
+                "format": "float"
+              },
+              "fats": {
+                "type": "number",
+                "format": "float"
+              },
+              "carbohydrates": {
+                "type": "number",
+                "format": "float"
+              }
+            }
+          }
+        ]
+      },
+      "Meal": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseAuditableEntity"
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "products": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/Product"
+                }
+              },
+              "mealPlans": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/MealPlan"
+                }
+              },
+              "name": {
+                "type": "string"
+              },
+              "type": {
+                "$ref": "#/components/schemas/MealTypeEnum"
+              },
+              "kcal": {
+                "type": "integer",
+                "format": "int32"
+              },
+              "proteins": {
+                "type": "number",
+                "format": "float"
+              },
+              "fats": {
+                "type": "number",
+                "format": "float"
+              },
+              "carbohydrates": {
+                "type": "number",
+                "format": "float"
+              }
+            }
+          }
+        ]
+      },
+      "MealPlan": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseAuditableEntity"
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "meals": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/Meal"
+                }
+              },
+              "forDate": {
+                "type": "string",
+                "format": "date"
+              },
+              "forUser": {
+                "type": "string",
+                "format": "guid"
               },
               "kcal": {
                 "type": "integer",
@@ -118,6 +214,18 @@
         "type": "object",
         "x-abstract": true,
         "additionalProperties": false
+      },
+      "MealTypeEnum": {
+        "type": "integer",
+        "description": "",
+        "x-enumNames": [
+          "CalculableMeal",
+          "Template"
+        ],
+        "enum": [
+          0,
+          1
+        ]
       }
     },
     "securitySchemes": {

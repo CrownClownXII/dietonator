@@ -18,6 +18,8 @@ public class Product : BaseAuditableEntity
         Carbohydrates = carbohydrates;
     }
 
+    public ICollection<Meal> Meals { get; set; } = new List<Meal>();
+
     public string Name { get; set; }
     public int Kcal { get; set; }
     public float Proteins { get; set; }
