@@ -17,9 +17,9 @@ public class MealProduct: BaseAuditableEntity
 
     protected MealProduct() { }
 
-    public ICollection<Meal> Meals { get; set; } = new List<Meal>();
-
+    public Meal Meal { get; set; }
     public Product Product { get; set; }
+
     public int Amount { get; set; }
     public AmountTypeEnum AmountType { get; set; }
 

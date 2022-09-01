@@ -37,6 +37,37 @@
             }
           }
         }
+      },
+      "put": {
+        "tags": [
+          "Meal"
+        ],
+        "operationId": "Meal_AddToMeal",
+        "requestBody": {
+          "x-name": "command",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateMealCommand"
+              }
+            }
+          },
+          "required": true,
+          "x-position": 1
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string",
+                  "format": "guid"
+                }
+              }
+            }
+          }
+        }
       }
     },
     "/api/Product": {

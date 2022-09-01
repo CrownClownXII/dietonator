@@ -1,4 +1,5 @@
-﻿using Dietonator.Infrastructure.Persistence;
+﻿using Dietonator.Domain.Common;
+using Dietonator.Infrastructure.Persistence;
 using MediatR;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc.Testing;
@@ -116,8 +117,8 @@ public partial class Testing
         return await context.FindAsync<TEntity>(keyValues);
     }
 
-    public static async Task AddAsync<TEntity>(TEntity entity)
-        where TEntity : class
+    public static async Task<Guid> AddAsync<TEntity>(TEntity entity)
+        where TEntity : BaseEntity
     {
         using var scope = _scopeFactory.CreateScope();
 
@@ -126,6 +127,8 @@ public partial class Testing
         context.Add(entity);
 
         await context.SaveChangesAsync();
+
+        return entity.Id;
     }
 
     public static async Task<int> CountAsync<TEntity>() where TEntity : class
