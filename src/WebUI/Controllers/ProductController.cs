@@ -1,4 +1,6 @@
 ﻿using Dietonator.Application.Common.Interfaces;
+using Dietonator.Application.Products.Commands.CreateProduct;
+using Dietonator.Application.Products.Queries;
 using Dietonator.Domain.Entities;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -7,16 +9,15 @@ namespace Dietonator.WebUI.Controllers;
 
 public class ProductController : ApiControllerBase
 {
-    private readonly IApplicationDbContext _context;
-
-    public ProductController(IApplicationDbContext context)
+    [HttpGet]
+    public async Task<IEnumerable<ProductListDto>> Get([FromQuery] GetProductListQuery query)
     {
-        _context = context;
+        return await Mediator.Send(query);
     }
 
-    [HttpGet]
-    public async Task<IEnumerable<Product>> Get()
+    [HttpPost]
+    public async Task<Guid> Post([FromBody]CreateProductCommand command)
     {
-        return await _context.Products.ToListAsync();
+        return await Mediator.Send(command);
     }
 }
