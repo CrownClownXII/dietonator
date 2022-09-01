@@ -16,13 +16,13 @@ public class Meal: BaseAuditableEntity
         Type = type;
     }
 
-    public ICollection<Product> Products { get; set; } = new List<Product>();
+    public ICollection<MealProduct> Products { get; set; } = new List<MealProduct>();
     public ICollection<MealPlan> MealPlans { get; set; } = new List<MealPlan>();
 
     public string Name { get; set; }
     public MealTypeEnum Type { get; set; }
 
-    public void AddProduct(Product product)
+    public void AddProduct(MealProduct product)
     {
         Products.Add(product);
     }

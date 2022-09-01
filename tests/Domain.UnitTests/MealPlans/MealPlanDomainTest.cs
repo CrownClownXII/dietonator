@@ -18,15 +18,19 @@ public class MealPlanDomainTest
         var productB = new Product("B", 32, 12.3f, 11.2f, 33.3f);
         var productC = new Product("C", 3, 12.3f, 11.2f, 33.3f);
 
+        var mealProductA = new MealProduct(productA, 11);
+        var mealProductB = new MealProduct(productB, 3);
+        var mealProductC = new MealProduct(productC, 8);
+
         var mealA = new Meal("A");
 
-        mealA.AddProduct(productA);
-        mealA.AddProduct(productB);
+        mealA.AddProduct(mealProductA);
+        mealA.AddProduct(mealProductB);
 
         var mealB = new Meal("B");
 
-        mealA.AddProduct(productB);
-        mealA.AddProduct(productC);
+        mealB.AddProduct(mealProductB);
+        mealB.AddProduct(mealProductC);
 
         var mealPlan = new MealPlan();
 
@@ -45,15 +49,19 @@ public class MealPlanDomainTest
         var productB = new Product("B", 32, 12.3f, 11.2f, 33.3f);
         var productC = new Product("C", 3, 12.3f, 11.2f, 33.3f);
 
+        var mealProductA = new MealProduct(productA, 11);
+        var mealProductB = new MealProduct(productB, 3);
+        var mealProductC = new MealProduct(productC, 8);
+
         var mealA = new Meal("A");
 
-        mealA.AddProduct(productA);
-        mealA.AddProduct(productB);
+        mealA.AddProduct(mealProductA);
+        mealA.AddProduct(mealProductB);
 
         var mealB = new Meal("B");
 
-        mealA.AddProduct(productB);
-        mealA.AddProduct(productC);
+        mealB.AddProduct(mealProductB);
+        mealB.AddProduct(mealProductC);
 
         var mealPlan = new MealPlan();
 
@@ -72,15 +80,19 @@ public class MealPlanDomainTest
         var productB = new Product("B", 32, 12.3f, 11.2f, 33.3f);
         var productC = new Product("C", 3, 12.3f, 11.2f, 33.3f);
 
+        var mealProductA = new MealProduct(productA, 11);
+        var mealProductB = new MealProduct(productB, 3);
+        var mealProductC = new MealProduct(productC, 8);
+
         var mealA = new Meal("A");
 
-        mealA.AddProduct(productA);
-        mealA.AddProduct(productB);
+        mealA.AddProduct(mealProductA);
+        mealA.AddProduct(mealProductB);
 
         var mealB = new Meal("B");
 
-        mealA.AddProduct(productB);
-        mealA.AddProduct(productC);
+        mealB.AddProduct(mealProductB);
+        mealB.AddProduct(mealProductC);
 
         var mealPlan = new MealPlan();
 
@@ -99,15 +111,19 @@ public class MealPlanDomainTest
         var productB = new Product("B", 32, 12.3f, 11.2f, 33.3f);
         var productC = new Product("C", 3, 12.3f, 11.2f, 33.3f);
 
+        var mealProductA = new MealProduct(productA, 11);
+        var mealProductB = new MealProduct(productB, 3);
+        var mealProductC = new MealProduct(productC, 8);
+
         var mealA = new Meal("A");
 
-        mealA.AddProduct(productA);
-        mealA.AddProduct(productB);
+        mealA.AddProduct(mealProductA);
+        mealA.AddProduct(mealProductB);
 
         var mealB = new Meal("B");
 
-        mealA.AddProduct(productB);
-        mealA.AddProduct(productC);
+        mealB.AddProduct(mealProductB);
+        mealB.AddProduct(mealProductC);
 
         var mealPlan = new MealPlan();
 

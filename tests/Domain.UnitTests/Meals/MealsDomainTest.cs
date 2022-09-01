@@ -20,11 +20,15 @@ public class MealsDomainTest
 
         var meal = new Meal("A");
 
-        meal.AddProduct(productA);
-        meal.AddProduct(productB);
-        meal.AddProduct(productC);
+        var mealProductA = new MealProduct(productA, 11);
+        var mealProductB = new MealProduct(productB, 3);
+        var mealProductC = new MealProduct(productC, 8);
 
-        var sum = productA.Kcal + productB.Kcal + productC.Kcal;
+        meal.AddProduct(mealProductA);
+        meal.AddProduct(mealProductB);
+        meal.AddProduct(mealProductC);
+
+        var sum = mealProductA.Kcal + mealProductB.Kcal + mealProductC.Kcal;
 
         meal.Kcal.Should().Be(sum);
     }
@@ -38,11 +42,15 @@ public class MealsDomainTest
 
         var meal = new Meal("A");
 
-        meal.AddProduct(productA);
-        meal.AddProduct(productB);
-        meal.AddProduct(productC);
+        var mealProductA = new MealProduct(productA, 11);
+        var mealProductB = new MealProduct(productB, 3);
+        var mealProductC = new MealProduct(productC, 8);
 
-        var sum = productA.Fats + productB.Fats + productC.Fats;
+        meal.AddProduct(mealProductA);
+        meal.AddProduct(mealProductB);
+        meal.AddProduct(mealProductC);
+
+        var sum = mealProductA.Fats + mealProductB.Fats + mealProductC.Fats;
 
         meal.Fats.Should().Be(sum);
     }
@@ -56,11 +64,15 @@ public class MealsDomainTest
 
         var meal = new Meal("A");
 
-        meal.AddProduct(productA);
-        meal.AddProduct(productB);
-        meal.AddProduct(productC);
+        var mealProductA = new MealProduct(productA, 11);
+        var mealProductB = new MealProduct(productB, 3);
+        var mealProductC = new MealProduct(productC, 8);
 
-        var sum = productA.Proteins + productB.Proteins + productC.Proteins;
+        meal.AddProduct(mealProductA);
+        meal.AddProduct(mealProductB);
+        meal.AddProduct(mealProductC);
+        
+        var sum = mealProductA.Proteins + mealProductB.Proteins + mealProductC.Proteins;
 
         meal.Proteins.Should().Be(sum);
     }
@@ -74,11 +86,15 @@ public class MealsDomainTest
 
         var meal = new Meal("A");
 
-        meal.AddProduct(productA);
-        meal.AddProduct(productB);
-        meal.AddProduct(productC);
+        var mealProductA = new MealProduct(productA, 11);
+        var mealProductB = new MealProduct(productB, 3);
+        var mealProductC = new MealProduct(productC, 8);
 
-        var sum = productA.Carbohydrates + productB.Carbohydrates + productC.Carbohydrates;
+        meal.AddProduct(mealProductA);
+        meal.AddProduct(mealProductB);
+        meal.AddProduct(mealProductC);
+
+        var sum = mealProductA.Carbohydrates + mealProductB.Carbohydrates + mealProductC.Carbohydrates;
 
         meal.Carbohydrates.Should().Be(sum);
     }
