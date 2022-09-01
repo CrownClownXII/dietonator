@@ -6,6 +6,39 @@
     "version": "1.0.0"
   },
   "paths": {
+    "/api/Meal": {
+      "post": {
+        "tags": [
+          "Meal"
+        ],
+        "operationId": "Meal_Post",
+        "requestBody": {
+          "x-name": "command",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateMealCommand"
+              }
+            }
+          },
+          "required": true,
+          "x-position": 1
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string",
+                  "format": "guid"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/Product": {
       "get": {
         "tags": [
@@ -74,6 +107,31 @@
   },
   "components": {
     "schemas": {
+      "CreateMealCommand": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "type": {
+            "$ref": "#/components/schemas/MealTypeEnum"
+          }
+        }
+      },
+      "MealTypeEnum": {
+        "type": "integer",
+        "description": "",
+        "x-enumNames": [
+          "CalculableMeal",
+          "Template"
+        ],
+        "enum": [
+          0,
+          1
+        ]
+      },
       "ProductListDto": {
         "type": "object",
         "additionalProperties": false,

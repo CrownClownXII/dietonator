@@ -5,11 +5,11 @@ using System.Text;
 using System.Threading.Tasks;
 using FluentValidation;
 
-namespace Dietonator.Application.Products.Commands.CreateProduct;
+namespace Dietonator.Application.Meals.Commands.CreateMeal;
 
-public class CreateProductCommandValidator : AbstractValidator<CreateProductCommand>
+public class CreateMealCommandValidator : AbstractValidator<CreateMealCommand>
 {
-    public CreateProductCommandValidator()
+    public CreateMealCommandValidator()
     {
         RuleFor(v => v.Name)
             .NotNull()

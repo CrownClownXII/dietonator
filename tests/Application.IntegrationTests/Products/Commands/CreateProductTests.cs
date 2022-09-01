@@ -16,7 +16,7 @@ using static Testing;
 public class CreateProductTests : BaseTestFixture
 {
     [Test]
-    public async Task ShouldRequireMinimumFields()
+    public async Task ShouldThrowValidationException()
     {
         var command = new CreateProductCommand();
 
@@ -25,7 +25,7 @@ public class CreateProductTests : BaseTestFixture
     }
 
     [Test]
-    public async Task ShouldCreateTodoItem()
+    public async Task ShouldCreateProduct()
     {
         var userId = await RunAsDefaultUserAsync();
 
