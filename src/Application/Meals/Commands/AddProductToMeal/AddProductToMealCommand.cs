@@ -28,20 +28,21 @@ public class AddProductToMealCommandHandler : IRequestHandler<AddProductToMealCo
 
     public async Task<Guid> Handle(AddProductToMealCommand request, CancellationToken cancellationToken)
     {
-        var mealProduct = await _context.MealProducts.FirstOrDefaultAsync(c 
-            => c.Product.Id == request.ProductId 
-                && c.Meal.Id == request.MealId, 
-            cancellationToken);
+        var meal = await GetMeal(request.MealId, cancellationToken);
+
+        var mealProduct = meal.Products
+            .FirstOrDefault(c => c.Product.Id == request.ProductId);
 
         if (mealProduct != null)
         {
             return mealProduct.Id;
         }
 
-        var meal = await GetMeal(request.MealId, cancellationToken);
         var product = await GetProduct(request.ProductId, cancellationToken);
 
         mealProduct = new MealProduct(product, 0);
+
+        _context.MealProducts.Add(mealProduct);
 
         meal.AddProduct(mealProduct);
 
@@ -51,8 +52,10 @@ public class AddProductToMealCommandHandler : IRequestHandler<AddProductToMealCo
     }
 
     private async Task<Meal> GetMeal(Guid mealId, CancellationToken cancellationToken = default) =>
-        await _context.Meals.FirstOrDefaultAsync(c => c.Id == mealId, cancellationToken)
-            ?? throw new NotFoundException($"Meal with id {mealId} not found");
+        await _context.Meals
+            .Include(c => c.Products)
+            .FirstOrDefaultAsync(c => c.Id == mealId, cancellationToken)
+                ?? throw new NotFoundException($"Meal with id {mealId} not found");
 
     private async Task<Product> GetProduct(Guid productId, CancellationToken cancellationToken = default) =>
         await _context.Products.FirstOrDefaultAsync(c => c.Id == productId, cancellationToken)

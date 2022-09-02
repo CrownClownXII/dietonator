@@ -37,8 +37,10 @@
             }
           }
         }
-      },
-      "put": {
+      }
+    },
+    "/api/Meal/product": {
+      "post": {
         "tags": [
           "Meal"
         ],
@@ -48,7 +50,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/CreateMealCommand"
+                "$ref": "#/components/schemas/AddProductToMealCommand"
               }
             }
           },
@@ -63,6 +65,51 @@
                 "schema": {
                   "type": "string",
                   "format": "guid"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Meal/product/{mealProductId}": {
+      "put": {
+        "tags": [
+          "Meal"
+        ],
+        "operationId": "Meal_SetAmountToMealProduct",
+        "parameters": [
+          {
+            "name": "mealProductId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "guid"
+            },
+            "x-position": 1
+          }
+        ],
+        "requestBody": {
+          "x-name": "command",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SetProductAmountCommand"
+              }
+            }
+          },
+          "required": true,
+          "x-position": 2
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/octet-stream": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
                 }
               }
             }
@@ -162,6 +209,34 @@
           0,
           1
         ]
+      },
+      "AddProductToMealCommand": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "mealId": {
+            "type": "string",
+            "format": "guid"
+          },
+          "productId": {
+            "type": "string",
+            "format": "guid"
+          }
+        }
+      },
+      "SetProductAmountCommand": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "mealProductId": {
+            "type": "string",
+            "format": "guid"
+          },
+          "amount": {
+            "type": "integer",
+            "format": "int32"
+          }
+        }
       },
       "ProductListDto": {
         "type": "object",

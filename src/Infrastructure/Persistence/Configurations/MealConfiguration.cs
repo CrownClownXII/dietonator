@@ -13,5 +13,8 @@ public class MealConfiguration : IEntityTypeConfiguration<Meal>
 {
     public void Configure(EntityTypeBuilder<Meal> builder)
     {
+        builder.HasMany(c => c.Products)
+            .WithOne()
+            .IsRequired();
     }
 }

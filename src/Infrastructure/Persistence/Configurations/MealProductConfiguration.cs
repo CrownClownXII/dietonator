@@ -13,5 +13,6 @@ public class MealProductConfiguration : IEntityTypeConfiguration<MealProduct>
 {
     public void Configure(EntityTypeBuilder<MealProduct> builder)
     {
+
     }
 }

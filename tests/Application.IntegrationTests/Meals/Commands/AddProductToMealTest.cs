@@ -20,13 +20,16 @@ public class AddProductToMealTest : BaseTestFixture
     {
         var userId = await RunAsDefaultUserAsync();
 
-        var productId = await AddAsync(new Product("test", 11, 11.0f, 12.0f, 13.0f));
-        var mealId = await AddAsync(new Meal("test"));
+        var product = new Product("test", 11, 11.0f, 12.0f, 13.0f);
+        var meal = new Meal("test");
+
+        await AddAsync(product);
+        await AddAsync(meal);
 
         var command = new AddProductToMealCommand
         {
             ProductId = Guid.NewGuid(),
-            MealId = mealId
+            MealId = meal.Id
         };
 
         await FluentActions.Invoking(() =>
@@ -38,12 +41,16 @@ public class AddProductToMealTest : BaseTestFixture
     {
         var userId = await RunAsDefaultUserAsync();
 
-        var productId = await AddAsync(new Product("test", 11, 11.0f, 12.0f, 13.0f));
-        var mealId = await AddAsync(new Meal("test"));
+        var product = new Product("test", 11, 11.0f, 12.0f, 13.0f);
+        var meal = new Meal("test");
+
+        await AddAsync(product);
+        await AddAsync(meal);
+
 
         var command = new AddProductToMealCommand
         {
-            ProductId = productId,
+            ProductId = product.Id,
             MealId = Guid.NewGuid()
         };
 
@@ -56,13 +63,16 @@ public class AddProductToMealTest : BaseTestFixture
     {
         var userId = await RunAsDefaultUserAsync();
 
-        var productId = await AddAsync(new Product("test", 11, 11.0f, 12.0f, 13.0f));
-        var mealId = await AddAsync(new Meal("test"));
+        var product = new Product("test", 11, 11.0f, 12.0f, 13.0f);
+        var meal = new Meal("test");
+
+        await AddAsync(product);
+        await AddAsync(meal);
 
         var command = new AddProductToMealCommand
         {
-            ProductId = productId,
-            MealId = mealId
+            ProductId = product.Id,
+            MealId = meal.Id
         };
 
         var mealProductId = await SendAsync(command);

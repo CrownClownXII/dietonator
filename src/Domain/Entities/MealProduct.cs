@@ -11,13 +11,13 @@ public class MealProduct: BaseAuditableEntity
 {
     public MealProduct(Product product, int amount)
     {
+        Id = Guid.NewGuid();
         Product = product;
         Amount = amount;
     }
 
     protected MealProduct() { }
 
-    public Meal Meal { get; set; }
     public Product Product { get; set; }
 
     public int Amount { get; set; }
