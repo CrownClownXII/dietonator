@@ -148,6 +148,27 @@
             }
           }
         }
+      },
+      "get": {
+        "tags": [
+          "MealPlan"
+        ],
+        "operationId": "MealPlan_GetList",
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/MealPlanListDto"
+                  }
+                }
+              }
+            }
+          }
+        }
       }
     },
     "/api/MealPlan/{id}": {
@@ -155,7 +176,7 @@
         "tags": [
           "MealPlan"
         ],
-        "operationId": "MealPlan_Get",
+        "operationId": "MealPlan_GetDetails",
         "parameters": [
           {
             "name": "id",
@@ -307,6 +328,20 @@
         "type": "object",
         "additionalProperties": false,
         "properties": {
+          "forDate": {
+            "type": "string",
+            "format": "date"
+          }
+        }
+      },
+      "MealPlanListDto": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "guid"
+          },
           "forDate": {
             "type": "string",
             "format": "date"

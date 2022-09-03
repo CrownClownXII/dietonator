@@ -11,7 +11,7 @@ using Dietonator.Domain.Entities;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 
-namespace Dietonator.Application.MealPlans.Queries.GetMealsList;
+namespace Dietonator.Application.MealPlans.Queries.GetMealPlanDetails;
 
 public class GetMealPlanDetailsQuery : IRequest<MealPlanDetailsDto>
 {

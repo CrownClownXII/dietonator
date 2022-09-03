@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Dietonator.Application.Common.Exceptions;
-using Dietonator.Application.MealPlans.Queries.GetMealPlanDetails;
+using Dietonator.Application.MealPlans.Queries.GetMealPlanListForUser;
 using Dietonator.Domain.Entities;
 using FluentAssertions;
 using NUnit.Framework;
@@ -13,20 +12,13 @@ namespace Dietonator.Application.IntegrationTests.MealPlans.Queries;
 
 using static Testing;
 
-public class GetMealPlanDetailsTest
+public class GetMealPlanListForUserTest
 {
     [Test]
-    public async Task ShouldThrowNotFoundExceptionOnMealPlanDetails()
+    public async Task ShoudlReturnMealPlanListForUser()
     {
-        var command = new GetMealPlanDetailsQuery();
+        await ResetState();
 
-        await FluentActions.Invoking(() =>
-            SendAsync(command)).Should().ThrowAsync<NotFoundException>();
-    }
-
-    [Test]
-    public async Task ShouldReturnAllProducts()
-    {
         var userId = await RunAsDefaultUserAsync();
 
         var mealPlan = new MealPlan(DateOnly.FromDateTime(DateTime.Now), userId);
@@ -51,14 +43,10 @@ public class GetMealPlanDetailsTest
         await AddAsync(mealPlan2);
         await AddAsync(mealPlan3);
 
-        var query = new GetMealPlanDetailsQuery()
-        {
-            MealPlanId = mealPlan.Id
-        };
+        var query = new GetMealPlanListForUserQuery();
 
         var result = await SendAsync(query);
 
-        result.Should().NotBeNull();
-        result.Meals.Should().HaveCount(3);
+        result.Should().HaveCount(3);
     }
 }

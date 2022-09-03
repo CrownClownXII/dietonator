@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using Dietonator.Application.Common.Mappings;
 using Dietonator.Domain.Entities;
 
-namespace Dietonator.Application.MealPlans.Queries.GetMealsList;
+namespace Dietonator.Application.MealPlans.Queries.GetMealPlanDetails;
 
 public class MealListDto : IMapFrom<Meal>
 {
