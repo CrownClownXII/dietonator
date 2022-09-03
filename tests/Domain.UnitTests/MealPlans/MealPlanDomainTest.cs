@@ -32,7 +32,7 @@ public class MealPlanDomainTest
         mealB.AddProduct(mealProductB);
         mealB.AddProduct(mealProductC);
 
-        var mealPlan = new MealPlan();
+        var mealPlan = new MealPlan(DateOnly.FromDateTime(DateTime.Now), Guid.NewGuid());
 
         mealPlan.AddMeal(mealA);
         mealPlan.AddMeal(mealB);
@@ -63,7 +63,7 @@ public class MealPlanDomainTest
         mealB.AddProduct(mealProductB);
         mealB.AddProduct(mealProductC);
 
-        var mealPlan = new MealPlan();
+        var mealPlan = new MealPlan(DateOnly.FromDateTime(DateTime.Now), Guid.NewGuid());
 
         mealPlan.AddMeal(mealA);
         mealPlan.AddMeal(mealB);
@@ -94,7 +94,7 @@ public class MealPlanDomainTest
         mealB.AddProduct(mealProductB);
         mealB.AddProduct(mealProductC);
 
-        var mealPlan = new MealPlan();
+        var mealPlan = new MealPlan(DateOnly.FromDateTime(DateTime.Now), Guid.NewGuid());
 
         mealPlan.AddMeal(mealA);
         mealPlan.AddMeal(mealB);
@@ -125,7 +125,7 @@ public class MealPlanDomainTest
         mealB.AddProduct(mealProductB);
         mealB.AddProduct(mealProductC);
 
-        var mealPlan = new MealPlan();
+        var mealPlan = new MealPlan(DateOnly.FromDateTime(DateTime.Now), Guid.NewGuid());
 
         mealPlan.AddMeal(mealA);
         mealPlan.AddMeal(mealB);

@@ -117,6 +117,39 @@
         }
       }
     },
+    "/api/MealPlan": {
+      "post": {
+        "tags": [
+          "MealPlan"
+        ],
+        "operationId": "MealPlan_Post",
+        "requestBody": {
+          "x-name": "command",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateMealPlanCommand"
+              }
+            }
+          },
+          "required": true,
+          "x-position": 1
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string",
+                  "format": "guid"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/Product": {
       "get": {
         "tags": [
@@ -235,6 +268,16 @@
           "amount": {
             "type": "integer",
             "format": "int32"
+          }
+        }
+      },
+      "CreateMealPlanCommand": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "forDate": {
+            "type": "string",
+            "format": "date"
           }
         }
       },

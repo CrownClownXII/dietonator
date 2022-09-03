@@ -8,9 +8,11 @@ namespace Dietonator.Domain.Entities;
 
 public class MealPlan : BaseAuditableEntity
 {
-    public MealPlan()
+    public MealPlan(DateOnly forDate, Guid forUser)
     {
         Id = Guid.NewGuid();
+        ForDate = forDate;
+        ForUser = forUser;
     }
 
     public ICollection<Meal> Meals { get; set; } = new List<Meal>();
