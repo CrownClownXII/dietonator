@@ -150,6 +150,38 @@
         }
       }
     },
+    "/api/MealPlan/{id}": {
+      "get": {
+        "tags": [
+          "MealPlan"
+        ],
+        "operationId": "MealPlan_Get",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "guid"
+            },
+            "x-position": 1
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MealPlanDetailsDto"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/Product": {
       "get": {
         "tags": [
@@ -278,6 +310,56 @@
           "forDate": {
             "type": "string",
             "format": "date"
+          }
+        }
+      },
+      "MealPlanDetailsDto": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "guid"
+          },
+          "forDate": {
+            "type": "string",
+            "format": "date"
+          },
+          "meals": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/MealListDto"
+            }
+          }
+        }
+      },
+      "MealListDto": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "guid"
+          },
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "kcal": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "proteins": {
+            "type": "number",
+            "format": "float"
+          },
+          "fats": {
+            "type": "number",
+            "format": "float"
+          },
+          "carbohydrates": {
+            "type": "number",
+            "format": "float"
           }
         }
       },
