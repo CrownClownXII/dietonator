@@ -1,4 +1,4 @@
-import '../styles/globals.css';
+import '../pages/globals.css';
 import * as NextImage from 'next/image';
 
 const BREAKPOINTS_INT = {
