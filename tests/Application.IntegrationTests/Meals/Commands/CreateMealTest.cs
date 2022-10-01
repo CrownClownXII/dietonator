@@ -26,19 +26,38 @@ public class CreateMealTest : BaseTestFixture
     }
 
     [Test]
+    public async Task ShouldThrowNotFoundException()
+    {
+        var command = new CreateMealCommand()
+        {
+            Name = "Test",
+            Type = MealTypeEnum.CalculableMeal,
+            MealPlanId = Guid.NewGuid()
+        };
+
+        await FluentActions.Invoking(() =>
+            SendAsync(command)).Should().ThrowAsync<NotFoundException>();
+    }
+
+    [Test]
     public async Task ShouldCreateMeal()
     {
         var userId = await RunAsDefaultUserAsync();
 
+        var mealPlan = new MealPlan(DateOnly.FromDateTime(DateTime.Now), userId);
+
+        await AddAsync(mealPlan);
+
         var command = new CreateMealCommand()
         {
             Name = "Test",
-            Type = MealTypeEnum.CalculableMeal
+            Type = MealTypeEnum.CalculableMeal,
+            MealPlanId = mealPlan.Id
         };
 
-        var productId = await SendAsync(command);
+        var mealId = await SendAsync(command);
 
-        var meal = await FindAsync<Meal>(productId);
+        var meal = await FindAsync<Meal>(mealId);
 
         meal.Should().NotBeNull();
         meal!.Name.Should().Be(command.Name);

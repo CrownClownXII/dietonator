@@ -17,7 +17,6 @@ public class Meal: BaseAuditableEntity
     }
 
     public ICollection<MealProduct> Products { get; set; } = new List<MealProduct>();
-    public ICollection<MealPlan> MealPlans { get; set; } = new List<MealPlan>();
 
     public string Name { get; set; }
     public MealTypeEnum Type { get; set; }
