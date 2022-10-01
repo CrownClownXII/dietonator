@@ -3,7 +3,7 @@ definitions:
         - step: &backend-test
             runs-on:
                 - self.hosted
-                - windows
+                - linux.shell
             script:
                 - dotnet restore
                 - dotnet build --no-restore
@@ -11,7 +11,7 @@ definitions:
         - step: &backend-deploy
             runs-on:
                 - self.hosted
-                - windows
+                - linux.shell
             script:
                 - dotnet publish ./src/WebUI/WebUI.csproj -c Release -o ./publish
             artifacts:
