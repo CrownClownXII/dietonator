@@ -6,12 +6,24 @@ builder.Services.AddApplicationServices();
 builder.Services.AddInfrastructureServices(builder.Configuration);
 builder.Services.AddWebUIServices();
 
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("testPolicy", policy  =>
+    {
+        policy.AllowAnyOrigin()
+            .AllowAnyHeader()
+            .AllowAnyMethod();
+    });
+});
+
 var app = builder.Build();
 
 if (app.Environment.IsDevelopment())
 {
     app.UseDeveloperExceptionPage();
     app.UseMigrationsEndPoint();
+    app.UseSwagger();
+    app.UseSwaggerUI();
 
     using (var scope = app.Services.CreateScope())
     {
@@ -27,16 +39,18 @@ else
 }
 
 app.UseHealthChecks("/health");
-app.UseHttpsRedirection();
+//app.UseHttpsRedirection();
 app.UseStaticFiles();
 
-app.UseSwaggerUi3(settings =>
+app.UseSwaggerUI(options =>
 {
-    settings.Path = "/api";
-    settings.DocumentPath = "/api/specification.json";
+    options.SwaggerEndpoint("/swagger/v1/swagger.json", "v1");
+    options.RoutePrefix = string.Empty;
 });
 
 app.UseRouting();
+
+app.UseCors("testPolicy");
 
 app.UseAuthentication();;
 app.UseAuthorization();
