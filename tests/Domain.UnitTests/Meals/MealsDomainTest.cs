@@ -18,7 +18,7 @@ public class MealsDomainTest
         var productB = new Product("B", 32, 12.3f, 11.2f, 33.3f);
         var productC = new Product("C", 3, 12.3f, 11.2f, 33.3f);
 
-        var meal = new Meal("A");
+        var meal = new Meal(Guid.NewGuid(), DateOnly.FromDateTime(DateTime.Now), "A");
 
         var mealProductA = new MealProduct(productA, 11);
         var mealProductB = new MealProduct(productB, 3);
@@ -40,7 +40,7 @@ public class MealsDomainTest
         var productB = new Product("B", 32, 12.3f, 11.2f, 33.3f);
         var productC = new Product("C", 3, 12.3f, 11.2f, 33.3f);
 
-        var meal = new Meal("A");
+        var meal = new Meal(Guid.NewGuid(), DateOnly.FromDateTime(DateTime.Now), "A");
 
         var mealProductA = new MealProduct(productA, 11);
         var mealProductB = new MealProduct(productB, 3);
@@ -62,7 +62,7 @@ public class MealsDomainTest
         var productB = new Product("B", 32, 12.3f, 11.2f, 33.3f);
         var productC = new Product("C", 3, 12.3f, 11.2f, 33.3f);
 
-        var meal = new Meal("A");
+        var meal = new Meal(Guid.NewGuid(), DateOnly.FromDateTime(DateTime.Now), "A");
 
         var mealProductA = new MealProduct(productA, 11);
         var mealProductB = new MealProduct(productB, 3);
@@ -84,7 +84,7 @@ public class MealsDomainTest
         var productB = new Product("B", 32, 12.3f, 11.2f, 33.3f);
         var productC = new Product("C", 3, 12.3f, 11.2f, 33.3f);
 
-        var meal = new Meal("A");
+        var meal = new Meal(Guid.NewGuid(), DateOnly.FromDateTime(DateTime.Now), "A");
 
         var mealProductA = new MealProduct(productA, 11);
         var mealProductB = new MealProduct(productB, 3);

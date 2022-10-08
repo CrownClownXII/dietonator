@@ -45,7 +45,7 @@ public class SetProductAmountTest : BaseTestFixture
 
         var product = new Product("test", 1, 1.1f, 1.1f, 1.1f);
         var mealProduct = new MealProduct(product, 100);
-        var meal = new Meal("test");
+        var meal = new Meal(userId, DateOnly.FromDateTime(DateTime.Now), "A");
 
         meal.AddProduct(mealProduct);
 

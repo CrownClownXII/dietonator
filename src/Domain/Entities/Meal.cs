@@ -9,9 +9,11 @@ namespace Dietonator.Domain.Entities;
 
 public class Meal: BaseAuditableEntity
 {
-    public Meal(string name, MealTypeEnum type = MealTypeEnum.CalculableMeal)
+    public Meal(Guid userId, DateOnly forDate, string name, MealTypeEnum type = MealTypeEnum.CalculableMeal)
     {
         Id = Guid.NewGuid();
+        UserId = userId;
+        ForDate = forDate;
         Name = name;
         Type = type;
     }
@@ -20,6 +22,9 @@ public class Meal: BaseAuditableEntity
 
     public string Name { get; set; }
     public MealTypeEnum Type { get; set; }
+    public DateOnly ForDate { get; set; }
+
+    public Guid UserId { get; set; }
 
     public void AddProduct(MealProduct product)
     {

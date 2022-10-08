@@ -21,7 +21,7 @@ public class AddProductToMealTest : BaseTestFixture
         var userId = await RunAsDefaultUserAsync();
 
         var product = new Product("test", 11, 11.0f, 12.0f, 13.0f);
-        var meal = new Meal("test");
+        var meal = new Meal(userId, DateOnly.FromDateTime(DateTime.Now), "test");
 
         await AddAsync(product);
         await AddAsync(meal);
@@ -42,11 +42,10 @@ public class AddProductToMealTest : BaseTestFixture
         var userId = await RunAsDefaultUserAsync();
 
         var product = new Product("test", 11, 11.0f, 12.0f, 13.0f);
-        var meal = new Meal("test");
+        var meal = new Meal(userId, DateOnly.FromDateTime(DateTime.Now), "test");
 
         await AddAsync(product);
         await AddAsync(meal);
-
 
         var command = new AddProductToMealCommand
         {
@@ -64,7 +63,7 @@ public class AddProductToMealTest : BaseTestFixture
         var userId = await RunAsDefaultUserAsync();
 
         var product = new Product("test", 11, 11.0f, 12.0f, 13.0f);
-        var meal = new Meal("test");
+        var meal = new Meal(userId, DateOnly.FromDateTime(DateTime.Now), "test");
 
         await AddAsync(product);
         await AddAsync(meal);
