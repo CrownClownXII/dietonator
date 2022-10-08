@@ -5,11 +5,11 @@ using System.Text;
 using System.Threading.Tasks;
 using FluentValidation;
 
-namespace Dietonator.Application.Meals.Commands.SetProductAmount;
+namespace Dietonator.Application.Meals.Commands.UpdateMealProduct;
 
-public class SetProductAmountCommandValidator : AbstractValidator<SetProductAmountCommand>
+public class UpdateMealProductCommandValidator : AbstractValidator<UpdateMealProductCommand>
 {
-    public SetProductAmountCommandValidator()
+    public UpdateMealProductCommandValidator()
     {
         RuleFor(v => v.Amount)
             .GreaterThanOrEqualTo(0);

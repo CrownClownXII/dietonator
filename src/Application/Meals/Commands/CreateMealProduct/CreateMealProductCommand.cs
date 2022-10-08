@@ -9,24 +9,24 @@ using Dietonator.Domain.Entities;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 
-namespace Dietonator.Application.Meals.Commands.AddProductToMeal;
+namespace Dietonator.Application.Meals.Commands.CreateMealProduct;
 
-public class AddProductToMealCommand : IRequest<Guid>
+public class CreateMealProductCommand : IRequest<Guid>
 {
     public Guid MealId { get; set; }
     public Guid ProductId { get; set; }
 }
 
-public class AddProductToMealCommandHandler : IRequestHandler<AddProductToMealCommand, Guid>
+public class CreateMealProductCommandHandler : IRequestHandler<CreateMealProductCommand, Guid>
 {
     private readonly IApplicationDbContext _context;
 
-    public AddProductToMealCommandHandler(IApplicationDbContext context)
+    public CreateMealProductCommandHandler(IApplicationDbContext context)
     {
         _context = context;
     }
 
-    public async Task<Guid> Handle(AddProductToMealCommand request, CancellationToken cancellationToken)
+    public async Task<Guid> Handle(CreateMealProductCommand request, CancellationToken cancellationToken)
     {
         var meal = await GetMeal(request.MealId, cancellationToken);
 

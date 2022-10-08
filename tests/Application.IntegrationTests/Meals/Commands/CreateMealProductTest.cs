@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Dietonator.Application.Common.Exceptions;
-using Dietonator.Application.Meals.Commands.AddProductToMeal;
+using Dietonator.Application.Meals.Commands.CreateMealProduct;
 using Dietonator.Domain.Entities;
 using FluentAssertions;
 using NUnit.Framework;
@@ -13,7 +13,7 @@ namespace Dietonator.Application.IntegrationTests.Meals.Commands;
 
 using static Testing;
 
-public class AddProductToMealTest : BaseTestFixture
+public class CreateMealProductTest : BaseTestFixture
 {
     [Test]
     public async Task ShouldThrowNotFoundExceptionOnProduct()
@@ -26,7 +26,7 @@ public class AddProductToMealTest : BaseTestFixture
         await AddAsync(product);
         await AddAsync(meal);
 
-        var command = new AddProductToMealCommand
+        var command = new CreateMealProductCommand
         {
             ProductId = Guid.NewGuid(),
             MealId = meal.Id
@@ -47,7 +47,7 @@ public class AddProductToMealTest : BaseTestFixture
         await AddAsync(product);
         await AddAsync(meal);
 
-        var command = new AddProductToMealCommand
+        var command = new CreateMealProductCommand
         {
             ProductId = product.Id,
             MealId = Guid.NewGuid()
@@ -68,7 +68,7 @@ public class AddProductToMealTest : BaseTestFixture
         await AddAsync(product);
         await AddAsync(meal);
 
-        var command = new AddProductToMealCommand
+        var command = new CreateMealProductCommand
         {
             ProductId = product.Id,
             MealId = meal.Id

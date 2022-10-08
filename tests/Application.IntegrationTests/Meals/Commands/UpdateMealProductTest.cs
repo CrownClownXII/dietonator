@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Dietonator.Application.Common.Exceptions;
-using Dietonator.Application.Meals.Commands.SetProductAmount;
+using Dietonator.Application.Meals.Commands.UpdateMealProduct;
 using Dietonator.Domain.Entities;
 using FluentAssertions;
 using NUnit.Framework;
@@ -13,12 +13,12 @@ namespace Dietonator.Application.IntegrationTests.Meals.Commands;
 
 using static Testing;
 
-public class SetProductAmountTest : BaseTestFixture
+public class UpdateMealProductTest : BaseTestFixture
 {
     [Test]
     public async Task ShouldThrowValidationException()
     {
-        var command = new SetProductAmountCommand()
+        var command = new UpdateMealProductCommand()
         {
             Amount = -1
         };
@@ -29,7 +29,7 @@ public class SetProductAmountTest : BaseTestFixture
 
     public async Task ShouldThrowNotFoundException()
     {
-        var command = new SetProductAmountCommand()
+        var command = new UpdateMealProductCommand()
         {
             MealProductId = Guid.NewGuid(),
         };
@@ -51,7 +51,7 @@ public class SetProductAmountTest : BaseTestFixture
 
         await AddAsync(meal);
 
-        var command = new SetProductAmountCommand
+        var command = new UpdateMealProductCommand
         {
             MealProductId = mealProduct.Id,
             Amount = 10,
