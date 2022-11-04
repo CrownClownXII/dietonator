@@ -40,7 +40,6 @@ public class ProductStatisticDto : IMapFrom<MealProduct>
     public void Mapping(Profile profile)
     {
          profile.CreateMap<MealProduct, ProductStatisticDto>()
-            .ForMember(c => c.MealId, src => src.MapFrom(x => x.MealId))
             .ForMember(c => c.ProductId, src => src.MapFrom(x => x.Product.Id))
             .ForMember(c => c.Name, src => src.MapFrom(x => x.Product.Name))
             .ForMember(c => c.Kcal, src => src.MapFrom(x => x.Product.Kcal * x.Amount))
