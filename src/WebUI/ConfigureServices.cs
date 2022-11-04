@@ -1,4 +1,6 @@
-﻿using Dietonator.Application.Common.Interfaces;
+﻿using System.ComponentModel;
+using Dietonator.Application.Common.Interfaces;
+using Dietonator.Infrastructure.Converters;
 using Dietonator.Infrastructure.Persistence;
 using Dietonator.WebUI.Filters;
 using Dietonator.WebUI.Services;
@@ -18,9 +20,20 @@ public static class ConfigureServices
         services.AddHealthChecks()
             .AddDbContextCheck<ApplicationDbContext>();
 
-        services.AddControllers(options =>
-            options.Filters.Add<ApiExceptionFilterAttribute>())
-                .AddFluentValidation(x => x.AutomaticValidationEnabled = false);
+        services
+            .AddControllers(options => {
+                options.UseDateOnlyTimeOnlyStringConverters();
+                options.Filters.Add<ApiExceptionFilterAttribute>();
+            })
+            .AddJsonOptions(options =>
+            {
+                options.UseDateOnlyTimeOnlyStringConverters();
+            })
+            .AddFluentValidation(x => x.AutomaticValidationEnabled = false);
+
+        // services.Configure<JsonOptions>(options => {
+        //     options.JsonSerializerOptions.Converters.Add(new DateOnlyJsonConverter());
+        // });
 
         // Customise default API behaviour
         services.Configure<ApiBehaviorOptions>(options =>

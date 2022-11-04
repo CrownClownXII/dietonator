@@ -2,7 +2,6 @@
 using Dietonator.Application.Meals.Commands.CreateMealProduct;
 using Dietonator.Application.Meals.Commands.UpdateMealProduct;
 using Dietonator.Application.Meals.Queries.GetMealsForDate;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Dietonator.WebUI.Controllers;
