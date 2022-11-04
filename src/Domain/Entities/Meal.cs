@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Dietonator.Domain.Enums;
+﻿using Dietonator.Domain.Enums;
 
 namespace Dietonator.Domain.Entities;
 
@@ -31,7 +26,7 @@ public class Meal: BaseAuditableEntity
         Products.Add(product);
     }
 
-    public int Kcal => Products.Sum(c => c.Kcal);
+    public float Kcal => Products.Sum(c => c.Kcal);
     public float Proteins => Products.Sum(c => c.Proteins);
     public float Fats => Products.Sum(c => c.Fats);
     public float Carbohydrates => Products.Sum(c => c.Carbohydrates);

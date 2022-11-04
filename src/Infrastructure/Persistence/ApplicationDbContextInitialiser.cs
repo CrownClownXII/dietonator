@@ -66,9 +66,19 @@ public class ApplicationDbContextInitialiser
         //    await _userManager.AddToRolesAsync(administrator, new[] { administratorRole.Name });
         //}
 
-        var product = new Product("test", 100, 100.0f, 100.0f, 100.0f);
+        if (_context.Products.Any()) {
+            return;
+        }
 
-        _context.Products.Add(product);
+        var bun = new Product("Bun", 273.0f, 8.9f, 11.5f, 55.9f);
+        var guacamole = new Product("Guacamole", 146.0f, 1.5f, 13.4f, 2.1f);
+        var eggs = new Product("Eggs", 155.0f, 13.0f, 11.0f, 1.1f);
+        var mozzarella = new Product("Mozzarella", 180.0f, 22.0f, 10.0f, 0.5f);
+
+        _context.Products.Add(bun);
+        _context.Products.Add(guacamole);
+        _context.Products.Add(eggs);
+        _context.Products.Add(mozzarella);
 
         await _context.SaveChangesAsync();
     }

@@ -3,6 +3,7 @@ using System;
 using Dietonator.Infrastructure.Persistence;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,10 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Dietonator.Infrastructure.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20221011113822_MoveAmountTypeToProduct")]
+    partial class MoveAmountTypeToProduct
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -142,8 +144,8 @@ namespace Dietonator.Infrastructure.Migrations
                         .HasColumnType("real")
                         .HasColumnName("fats");
 
-                    b.Property<float>("Kcal")
-                        .HasColumnType("real")
+                    b.Property<int>("Kcal")
+                        .HasColumnType("integer")
                         .HasColumnName("kcal");
 
                     b.Property<DateTimeOffset?>("LastModified")

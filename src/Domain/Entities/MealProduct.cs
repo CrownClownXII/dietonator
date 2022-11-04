@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Dietonator.Domain.Enums;
-
-namespace Dietonator.Domain.Entities;
+﻿namespace Dietonator.Domain.Entities;
 
 public class MealProduct: BaseAuditableEntity
 {
@@ -19,12 +12,12 @@ public class MealProduct: BaseAuditableEntity
     protected MealProduct() { }
 
     public Product Product { get; set; }
+    public Guid MealId { get; set; }
 
     public int Amount { get; set; }
-    public AmountTypeEnum AmountType { get; set; }
 
-    public int Kcal => Product.Kcal;
-    public float Proteins => Product.Proteins;
-    public float Fats => Product.Fats;
-    public float Carbohydrates => Product.Carbohydrates;
+    public float Kcal => Product.Kcal * Amount;
+    public float Proteins => Product.Proteins * Amount;
+    public float Fats => Product.Fats * Amount;
+    public float Carbohydrates => Product.Carbohydrates * Amount;
 }

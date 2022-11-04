@@ -15,6 +15,7 @@ public class CreateMealProductCommand : IRequest<Guid>
 {
     public Guid MealId { get; set; }
     public Guid ProductId { get; set; }
+    public int Amount { get; set; }
 }
 
 public class CreateMealProductCommandHandler : IRequestHandler<CreateMealProductCommand, Guid>
@@ -40,7 +41,7 @@ public class CreateMealProductCommandHandler : IRequestHandler<CreateMealProduct
 
         var product = await GetProduct(request.ProductId, cancellationToken);
 
-        mealProduct = new MealProduct(product, 0);
+        mealProduct = new MealProduct(product, request.Amount);
 
         _context.MealProducts.Add(mealProduct);
 
@@ -54,6 +55,7 @@ public class CreateMealProductCommandHandler : IRequestHandler<CreateMealProduct
     private async Task<Meal> GetMeal(Guid mealId, CancellationToken cancellationToken = default) =>
         await _context.Meals
             .Include(c => c.Products)
+                .ThenInclude(c => c.Product)
             .FirstOrDefaultAsync(c => c.Id == mealId, cancellationToken)
                 ?? throw new NotFoundException($"Meal with id {mealId} not found");
 

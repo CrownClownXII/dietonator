@@ -11,8 +11,8 @@ namespace Dietonator.Application.Products.Queries;
 public class ProductListDto : IMapFrom<Product>
 {
     public Guid Id { get; set; }
-    public string Name { get; set; }
-    public int Kcal { get; set; }
+    public string Name { get; set; } = "";
+    public float Kcal { get; set; }
     public float Proteins { get; set; }
     public float Fats { get; set; }
     public float Carbohydrates { get; set; }
