@@ -3,7 +3,7 @@ export interface IContent {
 }
 
 const Content = ({ children }: IContent): JSX.Element => {
-  return <div className="px-2.5 py-10">{children}</div>;
+  return <div className="px-2.5 py-10 w-full">{children}</div>;
 };
 
 export default Content;
