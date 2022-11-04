@@ -1,6 +1,5 @@
 ﻿using System.ComponentModel;
 using Dietonator.Application.Common.Interfaces;
-using Dietonator.Infrastructure.Converters;
 using Dietonator.Infrastructure.Persistence;
 using Dietonator.WebUI.Filters;
 using Dietonator.WebUI.Services;
@@ -32,7 +31,7 @@ public static class ConfigureServices
             .AddFluentValidation(x => x.AutomaticValidationEnabled = false);
 
         // services.Configure<JsonOptions>(options => {
-        //     options.JsonSerializerOptions.Converters.Add(new DateOnlyJsonConverter());
+        //  Add(new DateOnlyJsonConverter());
         // });
 
         // Customise default API behaviour
