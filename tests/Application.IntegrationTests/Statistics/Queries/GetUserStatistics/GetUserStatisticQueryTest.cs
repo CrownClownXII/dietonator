@@ -62,8 +62,8 @@ public class GetUserStatisticQueryTest : BaseTestFixture
 
         var query = new GetUserStatisticQuery()
         {
-            DateFrom = DateTime.Now.AddDays(-4),
-            DateTo = DateTime.Now
+            DateFrom = DateOnly.FromDateTime(DateTime.Now.AddDays(-4)),
+            DateTo = DateOnly.FromDateTime(DateTime.Now)
         };
 
         var result = await SendAsync(query);
