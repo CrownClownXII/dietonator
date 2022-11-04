@@ -12,3 +12,15 @@ export interface Meal {
     fats: number;
     carbohydrate: number;
 }
+
+export interface MealProduct {
+    id: string;
+    mealId: string;
+    productId: string;
+    name: string;
+    amount:number;
+    kcal: number;
+    proteins: number;
+    fats: number;
+    carbohydrates: number;
+  }
