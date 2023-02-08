@@ -17,6 +17,7 @@
     <ItemGroup>
         <PackageReference Include="DateOnlyTimeOnly.AspNet" Version="1.0.3" />
         <PackageReference Include="FluentValidation.AspNetCore" Version="10.3.4" />
+        <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="6.0.13" />
         <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="6.0.5" />
         <PackageReference Include="Microsoft.AspNetCore.SpaProxy" Version="6.0.5" />
         <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="6.0.5">
