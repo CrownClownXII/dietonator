@@ -8,6 +8,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "../../../store/store";
 import { NextRouter, useRouter } from "next/router";
 import { closeSidebar } from "../../../store/slices/layout/layoutSlice";
+import LoginBtn from "../../auth/LoginBtn";
 
 export interface ISidebar {}
 
@@ -52,6 +53,7 @@ const Sidebar = ({}: ISidebar): JSX.Element => {
         <SidebarItemContainer items={sidebarItems} />
         <Separator />
         <SidebarItem href="/logout" label="Logout" />
+        <LoginBtn />
       </div>
     </nav>
   );
