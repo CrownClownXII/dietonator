@@ -23,7 +23,7 @@ public class MealController : ApiControllerBase
     [HttpPost("{mealId}/product")]
     public async Task<ActionResult<Guid>> CreateMealProduct(Guid mealId, [FromBody] CreateMealProductCommand command)
     {
-        if (mealId != command.MealId)
+        if (IdentifiersNotEqual(mealId, command.MealId))
         {
             return BadRequest();
         }
@@ -34,12 +34,7 @@ public class MealController : ApiControllerBase
     [HttpPut("{mealId}/product/{mealProductId}")]
     public async Task<ActionResult> UpdateMealProduct(Guid mealId, Guid mealProductId, [FromBody] UpdateMealProductCommand command)
     {
-        if (mealId != command.MealId)
-        {
-            return BadRequest();
-        }
-
-        if (mealProductId != command.MealProductId)
+        if (IdentifiersNotEqual(mealId, command.MealId) || IdentifiersNotEqual(mealProductId, command.MealProductId))
         {
             return BadRequest();
         }
